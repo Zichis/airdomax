@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/website/HomeView.vue";
 import WebsiteView from "../views/website/Website.vue";
+import AuthView from "../views/auth/Auth.vue";
 
 const routes = [
   // {
@@ -32,6 +33,26 @@ const routes = [
         path: "/contact",
         name: "contact",
         component: () => import("../views/website/Contact.vue"),
+      },
+    ],
+  },
+  {
+    path: "/auth",
+    component: AuthView,
+    children: [
+      {
+        path: "",
+        component: () => import("../views/auth/Login.vue"),
+      },
+      {
+        path: "login",
+        name: "login",
+        component: () => import("../views/auth/Login.vue"),
+      },
+      {
+        path: "sign-up",
+        name: "sign-up",
+        component: () => import("../views/auth/Signup.vue"),
       },
     ],
   },
