@@ -10,4 +10,13 @@ export default {
       },
     });
   },
+  login(loginForm) {
+    return httpClient.post("/login", loginForm, {
+      headers: {
+        "Content-Type":
+          "multipart/form-data; charset=utf-8; boundary=" +
+          Math.random().toString().substr(2),
+      },
+    });
+  },
 };
