@@ -73,6 +73,7 @@
 
 <script>
 import AuthService from "../../services/AuthService";
+import router from "../../router";
 export default {
   name: "LoginView",
   data() {
@@ -90,7 +91,9 @@ export default {
     login() {
       AuthService.login(this.loginForm)
         .then((response) => {
-          console.log(response);
+          if (response.status == 200) {
+            router.push("/user/dashboard");
+          }
         })
         .catch((error) => {
           this.loginErrorMessage = error.response.data.message;
