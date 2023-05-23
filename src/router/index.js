@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/website/HomeView.vue";
 import WebsiteView from "../views/website/Website.vue";
 import AuthView from "../views/auth/Auth.vue";
+import UserView from "../views/user/User.vue";
 
 const routes = [
   // {
@@ -53,6 +54,17 @@ const routes = [
         path: "sign-up",
         name: "sign-up",
         component: () => import("../views/auth/Signup.vue"),
+      },
+    ],
+  },
+  {
+    path: "/user",
+    component: UserView,
+    redirect: "/user/dashboard",
+    children: [
+      {
+        path: "dashboard",
+        component: () => import("../views/user/Dashboard.vue"),
       },
     ],
   },
